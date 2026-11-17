@@ -1,0 +1,27 @@
+# Generated build files and local settings
+/build/
+/out/
+/cmake-build*/
+/.vs/
+/.idea/
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+
+# User certificates and private keys; test fixtures are embedded in source.
+*.crt
+*.cer
+*.crl
+*.pem
+*.der
+*.p7b
+*.p7c
+*.sst
+*.pfx
+*.p12
+*.key
+
+# Keep only the current portable executable.
+/dist/*
+!/dist/CertificateInstaller.exe

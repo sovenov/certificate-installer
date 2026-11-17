@@ -1,0 +1,68 @@
+#pragma code_page(65001)
+#include <windows.h>
+#include <commctrl.h>
+#include "resource.h"
+
+1 RT_MANIFEST "app.manifest"
+IDI_APP ICON "app.ico"
+
+IDD_MAIN DIALOGEX 0, 0, 430, 374
+STYLE DS_SETFONT | WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX
+EXSTYLE WS_EX_ACCEPTFILES
+CAPTION "Установка сертификатов"
+FONT 9, "Segoe UI"
+BEGIN
+    LTEXT "CRT, CER, CRL, PEM, DER, P7B/P7C, SST, PFX/P12 — выберите или перетащите файлы.", IDC_INTRO, 10, 8, 410, 13
+    PUSHBUTTON "Добавить файлы…", IDC_ADD, 10, 26, 91, 18
+    PUSHBUTTON "Убрать выбранные", IDC_REMOVE, 107, 26, 94, 18
+    PUSHBUTTON "Очистить список", IDC_CLEAR, 207, 26, 91, 18
+    CONTROL "", IDC_FILES, "SysListView32", LVS_REPORT | LVS_SHOWSELALWAYS | WS_TABSTOP | WS_BORDER, 10, 49, 410, 84
+    LTEXT "Расположение хранилища:", IDC_LOCATION_LABEL, 10, 141, 410, 11
+    COMBOBOX IDC_LOCATION, 10, 154, 410, 100, CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL
+    LTEXT "Хранилище:", IDC_STORE_LABEL, 10, 178, 410, 11
+    COMBOBOX IDC_STORE, 10, 191, 410, 100, CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL
+    LTEXT "Авто: корневые CA → Root; остальные CA и CRL → CA; конечные → My.", IDC_HINT, 10, 215, 410, 23
+    DEFPUSHBUTTON "Установить", IDC_INSTALL, 10, 244, 88, 23
+    PUSHBUTTON "Проверить", IDC_CHECK, 104, 244, 82, 23
+    PUSHBUTTON "Сохранить журнал…", IDC_SAVELOG, 311, 244, 109, 23
+    LTEXT "Выбрано файлов: 0", IDC_STATUS, 10, 276, 410, 12
+    EDITTEXT IDC_LOG, 10, 291, 410, 73, ES_MULTILINE | ES_READONLY | ES_AUTOVSCROLL | ES_AUTOHSCROLL | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+END
+
+IDD_PASSWORD DIALOGEX 0, 0, 350, 124
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Пароль PFX/P12"
+FONT 9, "Segoe UI"
+BEGIN
+    LTEXT "Контейнер:", -1, 10, 10, 330, 12
+    EDITTEXT IDC_PASSWORD_FILE, 10, 24, 330, 16, ES_READONLY | ES_AUTOHSCROLL
+    LTEXT "Введите пароль контейнера. Можно пропустить этот файл.", IDC_PASSWORD_HINT, 10, 46, 330, 24
+    EDITTEXT IDC_PASSWORD_VALUE, 10, 73, 330, 17, ES_PASSWORD | ES_AUTOHSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON "ОК", IDOK, 171, 100, 60, 16
+    PUSHBUTTON "Пропустить файл", IDCANCEL, 239, 100, 101, 16
+END
+
+1 VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+ FILEFLAGS 0
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_APP
+BEGIN
+ BLOCK "StringFileInfo"
+ BEGIN
+  BLOCK "041904b0"
+  BEGIN
+   VALUE "FileDescription", "Установка сертификатов\0"
+   VALUE "ProductName", "Certificate Installer\0"
+   VALUE "FileVersion", "1.0.0\0"
+   VALUE "ProductVersion", "1.0.0\0"
+   VALUE "OriginalFilename", "CertificateInstaller.exe\0"
+  END
+ END
+ BLOCK "VarFileInfo"
+ BEGIN
+  VALUE "Translation", 0x419, 1200
+ END
+END
