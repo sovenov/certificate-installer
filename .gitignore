@@ -25,3 +25,6 @@ __pycache__/
 # Keep only the current portable executable.
 /dist/*
 !/dist/CertificateInstaller.exe
+
+# Public certificates bundled with the project.
+!/Сертификаты_минцифры/**/*.cer
